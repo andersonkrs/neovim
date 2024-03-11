@@ -37,32 +37,4 @@ return {
       require("telescope").load_extension("ui-select")
     end,
   },
-  {
-    "debugloop/telescope-undo.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require("telescope").setup({
-        -- the rest of your telescope config goes here
-        extensions = {
-          undo = {
-            -- telescope-undo.nvim config, see below
-          },
-          -- other extensions:
-          -- file_browser = { ... }
-        },
-      })
-      require("telescope").load_extension("undo")
-      vim.keymap.set("n", "<leader>us", "<cmd>Telescope undo<cr>")
-    end,
-  }
-  -- {
-  --   "nvim-telescope/telescope-frecency.nvim",
-  --   config = function()
-  --     require("telescope").load_extension "frecency"
-  --
-  --     vim.keymap.set("n", "<leader>rf", "<Cmd>Telescope frecency<CR>")
-  --   end,
-  -- }
 }
