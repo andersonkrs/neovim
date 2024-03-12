@@ -4,3 +4,4 @@ eslintrc
 Gemfile
 js
 Pickable
+camelcase
