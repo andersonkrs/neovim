@@ -41,21 +41,6 @@ return {
 				other = "",
 			})
 
-			-- lsp.format_on_save({
-			--   format_opts = {
-			--     async = false,
-			--     timeout_ms = 10000,
-			--   },
-			--   servers = {
-			--     -- ['lua_ls'] = { 'lua' },
-			--     -- ['rust_analyzer'] = { 'rust' },
-			--     -- if you have a working setup with null-ls
-			--     -- you can specify filetypes it can format.
-			--     ["eslint"] = { "typescript" },
-			--     ['null-ls'] = { 'typescript' },
-			--   }
-			-- })
-			--
 			vim.diagnostic.config({
 				virtual_text = false,
 			})
