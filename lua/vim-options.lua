@@ -6,9 +6,9 @@ vim.cmd("set number")
 vim.cmd("set relativenumber")
 vim.cmd("set undofile")
 vim.cmd("set undodir=~/.vim/undo")
-
-vim.cmd.highlight('DiagnosticUnderlineError guisp=#ff0000 gui=undercurl')
+vim.cmd("set spelllang=en_us")
+vim.cmd("set spell")
 
 vim.g.mapleader = " "
 
-
+local sumpla = 1
