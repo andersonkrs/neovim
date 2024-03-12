@@ -18,7 +18,7 @@ return {
       vim.keymap.set("n", "<C-p>", builtin.find_files, {})
       vim.keymap.set("n", "<C-k>", builtin.live_grep, {})
       vim.keymap.set("n", "<C-h>", "<Cmd>Telescope oldfiles<CR>")
-      vim.keymap.set("n", "<C-@>", builtin.lsp_document_symbols, {})
+      vim.keymap.set("n", "<C-s>", builtin.lsp_document_symbols, {})
     end,
   },
   {
