@@ -11,4 +11,4 @@ vim.cmd("set spell")
 
 vim.g.mapleader = " "
 
-local sumpla = 1
+vim.api.nvim_set_option("clipboard","unnamed")
