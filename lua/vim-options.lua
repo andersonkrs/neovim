@@ -8,6 +8,8 @@ vim.cmd("set undofile")
 vim.cmd("set undodir=~/.vim/undo")
 vim.cmd("set spelllang=en_us")
 vim.cmd("set spell")
+vim.cmd("set splitright")
+vim.cmd("au TermOpen * setlocal nospell")
 
 vim.g.mapleader = " "
 
