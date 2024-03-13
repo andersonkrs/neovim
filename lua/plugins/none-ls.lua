@@ -13,13 +13,20 @@ return {
       return fn(utils)
     end
 
-    local cspell = require('cspell')
+    local cspell = require("cspell")
 
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
     null_ls.setup({
       sources = {
         formatting.prettier,
+        formatting.erb_format,
+        formatting.stylua,
+
         null_ls.builtins.completion.spell,
+        null_ls.builtins.completion.luasnip,
+
+        null_ls.builtins.diagnostics.haml_lint,
+
         cspell.diagnostics,
         cspell.code_actions,
 
@@ -58,10 +65,12 @@ return {
       },
       on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
-          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+          local pattern = { "*.lua", "*.ts", "*.tsx" }
+
+          vim.api.nvim_clear_autocmds({ group = augroup, pattern = pattern })
           vim.api.nvim_create_autocmd("BufWritePre", {
+            pattern = pattern,
             group = augroup,
-            buffer = bufnr,
             callback = function()
               vim.lsp.buf.format({ timeout_ms = 3000 })
             end,
