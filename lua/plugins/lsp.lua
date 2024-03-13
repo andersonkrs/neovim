@@ -89,6 +89,7 @@ return {
 				end,
 			})
 			require("lspconfig")["lua_ls"].setup({ capabilities = capabilities })
+			require("lspconfig")["graphql"].setup({ capabilities = capabilities })
 
 			lsp.setup()
 		end,
