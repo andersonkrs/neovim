@@ -13,7 +13,7 @@ return {
           enable = true,
           keymaps = {
             init_selection = "<Leader>ss", -- set to `false` to disable one of the mappings
-            node_incremental = "<Leader>si",
+            node_incremental = "<Leader>ss",
             scope_incremental = "<Leader>sc",
             node_decremental = "<Leader>sd",
           },
