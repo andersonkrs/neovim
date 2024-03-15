@@ -9,8 +9,14 @@ vim.cmd("set undodir=~/.vim/undo")
 vim.cmd("set spelllang=en_us")
 vim.cmd("set spell")
 vim.cmd("set splitright")
+
+-- Disable spelling for terminal windows
 vim.cmd("au TermOpen * setlocal nospell")
+
+--Keeps screen centered between jumps
+vim.cmd("set scrolloff=999")
 
 vim.g.mapleader = " "
 
-vim.api.nvim_set_option("clipboard","unnamed")
+-- Sync clipboard with system
+vim.api.nvim_set_option("clipboard", "unnamed")
