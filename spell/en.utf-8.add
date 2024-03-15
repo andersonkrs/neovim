@@ -10,3 +10,9 @@ eaches
 barcode
 SoftDestroyable
 simplier
+non_pickable_type
+pickable_type
+ERB
+ckorder
+on_backorder
+on_backorder
