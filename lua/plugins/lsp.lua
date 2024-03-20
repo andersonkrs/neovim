@@ -18,6 +18,7 @@ return {
 					"tsserver",
 					"solargraph",
 					"eslint",
+					"ruby_ls",
 				},
 			})
 		end,
@@ -58,7 +59,7 @@ return {
 				vim.keymap.set("n", "gi", function()
 					vim.lsp.buf.implementation()
 				end, { desc = "[G]o to [I]mplementation (with LSP)", buffer = bufnr, remap = false })
-				vim.keymap.set("n", "K", function()
+				vim.keymap.set("n", "<leader>K", function()
 					vim.lsp.buf.hover()
 				end, { desc = "[K] Hover info", buffer = bufnr, remap = false })
 				vim.keymap.set("n", "R", function()
@@ -74,12 +75,25 @@ return {
 
 			-- Set up lspconfig.
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local lsp_config = require("lspconfig")
 			-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-			require("lspconfig")["solargraph"].setup({ capabilities = capabilities })
-			require("lspconfig")["html"].setup({ capabilities = capabilities })
-			require("lspconfig")["cssls"].setup({ capabilities = capabilities })
-			require("lspconfig")["tsserver"].setup({ capabilities = capabilities })
-			require("lspconfig").eslint.setup({
+
+			lsp_config["solargraph"].setup({
+				capabilities = capabilities,
+				root_dir = lsp_config.util.root_pattern("Gemfile", ".git", "."),
+				cmd = { "/Users/anderson/.asdf/shims/solargraph", "stdio" },
+				filetypes = {
+					"ruby",
+				},
+				flags = {
+					debounce_text_changes = 150,
+				},
+			})
+
+			lsp_config["html"].setup({ capavibilities = capabilities })
+			lsp_config["cssls"].setup({ capabilities = capabilities })
+			lsp_config["tsserver"].setup({ capabilities = capabilities })
+			lsp_config.eslint.setup({
 				capabilities = capabilities,
 				on_attach = function(client, bufnr)
 					vim.api.nvim_create_autocmd("BufWritePre", {
@@ -88,8 +102,8 @@ return {
 					})
 				end,
 			})
-			require("lspconfig")["lua_ls"].setup({ capabilities = capabilities })
-			require("lspconfig")["graphql"].setup({ capabilities = capabilities })
+			lsp_config["lua_ls"].setup({ capabilities = capabilities })
+			lsp_config["graphql"].setup({ capabilities = capabilities })
 
 			lsp.setup()
 		end,
