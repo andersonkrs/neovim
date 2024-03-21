@@ -53,4 +53,23 @@ return {
 		end,
 		opts = {},
 	},
+	{
+		"tpope/vim-projectionist",
+		config = function()
+			vim.g.projectionist_heuristics = {
+				["*"] = {
+					["lib/tasks/*.rake"] = {
+						alternate = "spec/lib/tasks/{}_spec.rb",
+					},
+					["spec/lib/tasks/*_spec.rb"] = {
+						alternate = "lib/tasks/{}.rake",
+					},
+					-- ["spec/factories/*.rb"] = {
+					-- 	type = "factory",
+					-- 	related = "models/{singular}.rb",
+					-- },
+				},
+			}
+		end,
+	},
 }
